@@ -1,0 +1,122 @@
+[
+  {
+    "room": {
+      "image": "/images/room.webp",
+      "number": "101",
+      "id": "R101"
+    },
+    "roomType": "Single Bed",
+    "amenities": ["WiFi", "TV", "Aire acondicionado"],
+    "price": 75,
+    "offer": 100,
+    "status": true
+  },
+  {
+    "room": {
+      "image": "/images/room.webp",
+      "number": "102",
+      "id": "R102"
+    },
+    "roomType": "Double Bed",
+    "amenities": ["WiFi", "Desayuno incluido", "Minibar"],
+    "price": 120,
+    "offer": 150,
+    "status": false
+  },
+  {
+    "room": {
+      "image": "/images/room.webp",
+      "number": "103",
+      "id": "R103"
+    },
+    "roomType": "Double Superior",
+    "amenities": ["WiFi", "Piscina privada", "Jacuzzi"],
+    "price": 180,
+    "offer": 200,
+    "status": true
+  },
+  {
+    "room": {
+      "image": "/images/room.webp",
+      "number": "104",
+      "id": "R104"
+    },
+    "roomType": "Suite",
+    "amenities": ["WiFi", "Desayuno buffet", "Servicio de habitaciones"],
+    "price": 250,
+    "offer": 300,
+    "status": false
+  },
+  {
+    "room": {
+      "image": "/images/room.webp",
+      "number": "105",
+      "id": "R105"
+    },
+    "roomType": "Single Bed",
+    "amenities": ["WiFi", "Gimnasio", "Estacionamiento"],
+    "price": 80,
+    "offer": 100,
+    "status": true
+  },
+  {
+    "room": {
+      "image": "/images/room.webp",
+      "number": "106",
+      "id": "R106"
+    },
+    "roomType": "Double Bed",
+    "amenities": ["WiFi", "Balcón con vista al mar", "Desayuno incluido"],
+    "price": 130,
+    "offer": 150,
+    "status": false
+  },
+  {
+    "room": {
+      "image": "/images/room.webp",
+      "number": "107",
+      "id": "R107"
+    },
+    "roomType": "Double Superior",
+    "amenities": ["WiFi", "Sauna", "Servicio de lavandería"],
+    "price": 190,
+    "offer": 220,
+    "status": true
+  },
+  {
+    "room": {
+      "image": "/images/room.webp",
+      "number": "108",
+      "id": "R108"
+    },
+    "roomType": "Suite",
+    "amenities": ["WiFi", "Jacuzzi", "Desayuno buffet"],
+    "price": 260,
+    "offer": 320,
+    "status": false
+  },
+  {
+    "room": {
+      "image": "/images/room.webp",
+      "number": "109",
+      "id": "R109"
+    },
+    "roomType": "Single Bed",
+    "amenities": ["WiFi", "Piscina compartida", "Desayuno continental"],
+    "price": 85,
+    "offer": 110,
+    "status": true
+  },
+  {
+    "room": {
+      "image": "/images/room.webp",
+      "number": "110",
+      "id": "R110"
+    },
+    "roomType": "Double Bed",
+    "amenities": ["WiFi", "Terraza", "Desayuno incluido"],
+    "price": 140,
+    "offer": 160,
+    "status": false
+  }
+]
