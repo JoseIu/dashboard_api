@@ -1,0 +1,152 @@
+[
+  {
+    "employee": {
+      "image": "/images/employee.webp",
+      "firstName": "Juan",
+      "lastName": "Martínez",
+      "employeeId": "EMP001",
+      "startDate": "2023-01-15"
+    },
+    "description": "Desarrollador Full Stack",
+    "contact": {
+      "phone": "123-456-7890",
+      "email": "juan.martinez@example.com"
+    },
+    "status": true
+  },
+  {
+    "employee": {
+      "image": "/images/employee.webp",
+      "firstName": "María",
+      "lastName": "González",
+      "employeeId": "EMP002",
+      "startDate": "2022-11-20"
+    },
+    "description": "Analista de Datos",
+    "contact": {
+      "phone": "234-567-8901",
+      "email": "maria.gonzalez@example.com"
+    },
+    "status": true
+  },
+  {
+    "employee": {
+      "image": "/images/employee.webp",
+      "firstName": "Pedro",
+      "lastName": "López",
+      "employeeId": "EMP003",
+      "startDate": "2023-03-10"
+    },
+    "description": "Gerente de Proyectos",
+    "contact": {
+      "phone": "345-678-9012",
+      "email": "pedro.lopez@example.com"
+    },
+    "status": false
+  },
+  {
+    "employee": {
+      "image": "/images/employee.webp",
+      "firstName": "Ana",
+      "lastName": "Rodríguez",
+      "employeeId": "EMP004",
+      "startDate": "2023-07-05"
+    },
+    "description": "Diseñadora UX/UI",
+    "contact": {
+      "phone": "456-789-0123",
+      "email": "ana.rodriguez@example.com"
+    },
+    "status": true
+  },
+  {
+    "employee": {
+      "image": "/images/employee.webp",
+      "firstName": "Carlos",
+      "lastName": "Pérez",
+      "employeeId": "EMP005",
+      "startDate": "2023-02-28"
+    },
+    "description": "Ingeniero de Software",
+    "contact": {
+      "phone": "567-890-1234",
+      "email": "carlos.perez@example.com"
+    },
+    "status": false
+  },
+  {
+    "employee": {
+      "image": "/images/employee.webp",
+      "firstName": "Laura",
+      "lastName": "Sánchez",
+      "employeeId": "EMP006",
+      "startDate": "2023-09-10"
+    },
+    "description": "Analista de Negocios",
+    "contact": {
+      "phone": "678-901-2345",
+      "email": "laura.sanchez@example.com"
+    },
+    "status": true
+  },
+  {
+    "employee": {
+      "image": "/images/employee.webp",
+      "firstName": "Diego",
+      "lastName": "Hernández",
+      "employeeId": "EMP007",
+      "startDate": "2023-06-15"
+    },
+    "description": "Desarrollador Frontend",
+    "contact": {
+      "phone": "789-012-3456",
+      "email": "diego.hernandez@example.com"
+    },
+    "status": false
+  },
+  {
+    "employee": {
+      "image": "/images/employee.webp",
+      "firstName": "Elena",
+      "lastName": "Gómez",
+      "employeeId": "EMP008",
+      "startDate": "2023-04-20"
+    },
+    "description": "Analista de Marketing",
+    "contact": {
+      "phone": "890-123-4567",
+      "email": "elena.gomez@example.com"
+    },
+    "status": true
+  },
+  {
+    "employee": {
+      "image": "/images/employee.webp",
+      "firstName": "Javier",
+      "lastName": "Díaz",
+      "employeeId": "EMP009",
+      "startDate": "2023-08-05"
+    },
+    "description": "Diseñador Gráfico",
+    "contact": {
+      "phone": "901-234-5678",
+      "email": "javier.diaz@example.com"
+    },
+    "status": true
+  },
+  {
+    "employee": {
+      "image": "/images/employee.webp",
+      "firstName": "Sofía",
+      "lastName": "Martín",
+      "employeeId": "EMP010",
+      "startDate": "2023-10-25"
+    },
+    "description": "Especialista en Recursos Humanos",
+    "contact": {
+      "phone": "012-345-6789",
+      "email": "sofia.martin@example.com"
+    },
+    "status": false
+  }
+]
