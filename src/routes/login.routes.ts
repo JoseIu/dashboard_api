@@ -1,10 +1,9 @@
 import { Router } from 'express';
+import { loginControlller } from '../controllers/loginController';
 import loginDTO from '../dto/login.dto';
 
 const loginRoutes = Router();
 
-loginRoutes.post('/login', loginDTO, (req, res) => {
-  res.send('Login');
-});
+loginRoutes.post('/login', loginDTO, loginControlller);
 
 export default loginRoutes;
