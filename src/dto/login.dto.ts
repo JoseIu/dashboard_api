@@ -36,7 +36,6 @@ const validateSchema = ajv.compile(logigTDOSchema);
 
 const loginDTO = (req: Request, res: Response, next: NextFunction) => {
   const isDTOValid = validateSchema(req.body);
-  console.log(validateSchema.errors);
 
   if (!isDTOValid) return res.status(400).json(validateSchema.errors?.map(error => error.message));
   next();
