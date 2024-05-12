@@ -27,15 +27,6 @@ const logigTDOSchema: JSONSchemaType<LoginTDO> = {
   },
   required: ['email', 'password'],
   additionalProperties: false
-  //   errorMessage: {
-  //     required: {
-  //       email: {
-  //         format: 'Email is ivalid',
-  //         type: 'Email is required'
-  //       },
-  //       password: 'Password is required'
-  //     }
-  //   }
 };
 
 const ajv = new Ajv({ allErrors: true });
