@@ -13,7 +13,7 @@ export const getAllRooms = async (req: Request, res: Response) => {
   }
 };
 
-export const getRoomsById = async (req: Request, res: Response) => {
+export const getRoomById = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   const response = (await asyncRequest<Room>({ data: roomList })) as Room[];
