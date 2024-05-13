@@ -8,6 +8,6 @@ export const loginControlller = (req: Request, res: Response) => {
     console.log(existUser);
     return res.status(200).json(existUser);
   } catch (error) {
-    res.status(401).json({ message: 'User Unauthorized' });
+    res.status(401).json({ message: 'Incorrect credentials' });
   }
 };
