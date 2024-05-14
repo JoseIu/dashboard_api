@@ -2,29 +2,28 @@ import { Request, Response } from 'express';
 import bookingList from '../data/bookings.json';
 import { Booking } from '../interfaces/booking.inerface';
 import { asyncRequest } from '../services/getData.service';
+import { catchedAsyc } from '../utils/catchedAsyc';
+import { ClientError } from '../utils/errorClient';
+import responseCliente from '../utils/responseCliente';
 
-export const getAllBookings = async (req: Request, res: Response) => {
-  try {
-    const bookingsList = await asyncRequest<Booking>({ data: bookingList as Booking[] });
+const getAllBookings = async (req: Request, res: Response) => {
+  const bookingsList = await asyncRequest<Booking>({ data: bookingList as Booking[] });
 
-    return res.status(200).json({ bookingsList });
-  } catch (error) {
-    return res.status(500).json({ message: 'Internal server error' });
-  }
+  return responseCliente(res, 200, bookingsList);
 };
-
-export const getBookingById = async (req: Request, res: Response) => {
+const getBookingById = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   const bookingsList = (await asyncRequest<Booking>({ data: bookingList as Booking[] })) as Booking[];
 
-  try {
-    const booking = bookingsList.find(booking => booking.guest.reservationID === id);
+  const booking = bookingsList.find(booking => booking.guest.reservationID === id);
 
-    if (!booking) return res.status(404).json({ message: `Booking with id ${id} not found` });
+  if (!booking) throw new ClientError(`Booking with id ${id} not found`, 404);
 
-    return res.status(200).json(booking);
-  } catch (error) {
-    return res.status(500).json({ message: 'Internal server error' });
-  }
+  return responseCliente(res, 200, booking);
+};
+
+export default {
+  getAllBookings: catchedAsyc(getAllBookings),
+  getBookingById: catchedAsyc(getBookingById)
 };
