@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import employeeControoler from '../controllers/employeeControoler';
+
 import checkToken from '../middleware/checkToken';
 
 const employeeRoutes = Router();
