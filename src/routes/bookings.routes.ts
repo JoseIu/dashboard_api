@@ -1,10 +1,11 @@
 import { Router } from 'express';
-import { getAllBookings, getBookingById } from '../controllers/bookingsController';
+
+import bookingController from '../controllers/bookingsController';
 import checkToken from '../middleware/checkToken';
 
 const bookingsRouter = Router();
 
-bookingsRouter.get('/bookings', checkToken, getAllBookings);
-bookingsRouter.get('/booking/:id', checkToken, getBookingById);
+bookingsRouter.get('/bookings', checkToken, bookingController.getAllBookings);
+bookingsRouter.get('/booking/:id', checkToken, bookingController.getBookingById);
 
 export default bookingsRouter;
