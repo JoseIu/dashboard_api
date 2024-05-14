@@ -9,7 +9,7 @@ const checkToken = (req: Request, res: Response, next: NextFunction) => {
   const { authorization } = req.headers;
 
   if (!authorization || !authorization.startsWith('Bearer'))
-    return res.status(400).json({ message: 'Token no valid' });
+    return res.status(401).json({ message: 'Token no valid' });
 
   const token = authorization.split(' ')[1];
   try {
@@ -18,7 +18,7 @@ const checkToken = (req: Request, res: Response, next: NextFunction) => {
     const verifyUser = findUser(id, email);
     if (verifyUser) return next();
   } catch (error) {
-    return res.status(400).json({ message: 'User not found' });
+    return res.status(401).json({ message: 'User not found' });
   }
 };
 
