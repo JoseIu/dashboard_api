@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import request from 'supertest';
 import app from '../app';
+import server from '../server';
 
 import bookings from '../data/bookings.json';
 import employeeList from '../data/employeeList.json';
@@ -122,7 +123,6 @@ describe('GET /employees', () => {
 describe('POST /login', () => {
   const usersList = users;
   const userTes = usersList[0];
-  console.log(userTes);
 
   test('should response a status code 200 if all is OK', async () => {
     const response = await request(app).post('/login').send({ email: userTes.email, password: userTes.password });
@@ -148,4 +148,8 @@ describe('POST /login', () => {
 
     expect(response.body).toEqual([expect.any(String)]);
   });
+});
+
+afterAll(() => {
+  server.close();
 });
