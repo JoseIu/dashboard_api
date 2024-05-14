@@ -12,7 +12,7 @@ describe('Get /bookings', () => {
     expect(response.status).toBe(200);
   });
 
-  test('Should response with a 401 status code, beacuse no token', async () => {
+  test('Should response with a 401 status code if Unauthorized', async () => {
     const response = await request(app).get('/bookings');
     expect(response.status).toBe(401);
   });
