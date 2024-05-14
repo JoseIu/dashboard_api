@@ -25,4 +25,18 @@ describe('Get /bookings', () => {
       data
     });
   });
+  test('Should response with a booking searched by ID', async () => {
+    const response = await request(app).get('/booking/ABC123').set('Authorization', `Bearer ${token}`);
+    const booking = bookings.find(booking => booking.guest.reservationID === 'ABC123');
+
+    expect(response.body).toMatchObject({
+      error: false,
+      data: booking
+    });
+  });
+  test('Should response with a status 404 and ', async () => {
+    const response = await request(app).get('/booking/ABC1234').set('Authorization', `Bearer ${token}`);
+
+    expect(response.status).toBe(404);
+  });
 });
