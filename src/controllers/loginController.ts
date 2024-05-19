@@ -1,24 +1,30 @@
 import 'dotenv/config';
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import authByEmailPwd from '../helpers/authByEmailPwd';
+import User from '../models/User';
 import { catchedAsyc } from '../utils/catchedAsyc';
 import { ClientError } from '../utils/errorClient';
 import responseCliente from '../utils/responseCliente';
 
 const SECRET_KEY = process.env.SECRET_KEY;
 
-const loginControlller = (req: Request, res: Response) => {
+const loginControlller = async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
-  try {
-    const existUser = authByEmailPwd(email, password);
+  const user = await User.findOne({ email });
+  if (!user) throw new ClientError('User not found', 404);
+  const token = jwt.sign({ id: user.id, email: user.email }, SECRET_KEY!, { expiresIn: 86400 });
+  console.log(user);
+  return responseCliente(res, 200, { user, token });
 
-    const token = jwt.sign({ id: existUser.id, email: existUser.email }, SECRET_KEY!, { expiresIn: 86400 });
-    return responseCliente(res, 200, { token });
-  } catch (error) {
-    throw new ClientError('Invalid credentials', 401);
-  }
+  // try {
+  //   const existUser = authByEmailPwd(email, password);
+
+  //   const token = jwt.sign({ id: existUser.id, email: existUser.email }, SECRET_KEY!, { expiresIn: 86400 });
+  //   return responseCliente(res, 200, { token });
+  // } catch (error) {
+  //   throw new ClientError('Invalid credentials', 401);
+  // }
 };
 
 export default {
