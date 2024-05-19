@@ -6,3 +6,5 @@ uploads/*
 !/uploads/.gitkeep
 dist/
 .serverless/
+swagger.config.ts
+src/docs/*
