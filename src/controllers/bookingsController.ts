@@ -1,22 +1,19 @@
 import { Request, Response } from 'express';
-import bookingList from '../data/bookings.json';
-import { Booking } from '../interfaces/booking.inerface';
-import { asyncRequest } from '../services/getData.service';
+import Booking from '../models/Booking';
 import { catchedAsyc } from '../utils/catchedAsyc';
 import { ClientError } from '../utils/errorClient';
 import responseCliente from '../utils/responseCliente';
 
 const getAllBookings = async (req: Request, res: Response) => {
-  const bookingsList = await asyncRequest<Booking>({ data: bookingList as Booking[] });
+  const bookingsList = await Booking.find();
 
   return responseCliente(res, 200, bookingsList);
 };
 const getBookingById = async (req: Request, res: Response) => {
   const { id } = req.params;
+  if (!id) throw new ClientError('Id is required', 400);
 
-  const bookingsList = (await asyncRequest<Booking>({ data: bookingList as Booking[] })) as Booking[];
-
-  const booking = bookingsList.find(booking => booking.guest.reservationID === id);
+  const booking = await Booking.findOne({ _id: id });
 
   if (!booking) throw new ClientError(`Booking with id ${id} not found`, 404);
 
