@@ -13,18 +13,9 @@ const loginControlller = async (req: Request, res: Response) => {
 
   const user = await User.findOne({ email });
   if (!user) throw new ClientError('User not found', 404);
+
   const token = jwt.sign({ id: user.id, email: user.email }, SECRET_KEY!, { expiresIn: 86400 });
-  console.log(user);
-  return responseCliente(res, 200, { user, token });
-
-  // try {
-  //   const existUser = authByEmailPwd(email, password);
-
-  //   const token = jwt.sign({ id: existUser.id, email: existUser.email }, SECRET_KEY!, { expiresIn: 86400 });
-  //   return responseCliente(res, 200, { token });
-  // } catch (error) {
-  //   throw new ClientError('Invalid credentials', 401);
-  // }
+  return responseCliente(res, 200, { token });
 };
 
 export default {
