@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 import 'dotenv/config';
 import { MongoClient } from 'mongodb';
-import { Booking } from '../interfaces/booking.inerface';
+import { BookingInterface } from '../interfaces/booking.inerface';
 const uri = process.env.MONGO_URI;
 const seedDB = async () => {
   const client = new MongoClient(uri!);
@@ -14,18 +14,25 @@ const seedDB = async () => {
 
     await collection.drop();
 
-    let bookingsList: Booking[] = [];
+    let bookingsList: BookingInterface[] = [];
 
     for (let i = 0; i < 20; i++) {
-      let booking: Booking = {
-        orderDate: faker.date.anytime().toString(),
+      const checkInDate = faker.date.anytime();
+      const [dateIn, timeIn] = checkInDate.toISOString().split('T');
+      const daysUntilCheckOut = faker.number.int({ min: 1, max: 14 });
+      const checkOutDate = new Date(checkInDate);
+      checkOutDate.setDate(checkInDate.getDate() + daysUntilCheckOut);
+      const [dateOut, timeOut] = checkOutDate.toISOString().split('T');
+
+      let booking: BookingInterface = {
+        orderDate: faker.date.anytime().toISOString(),
         checkin: {
-          date: faker.date.anytime().toISOString().slice(0, 10),
-          time: new Date(faker.date.future().toISOString()).toLocaleTimeString('en-US', { hour12: true })
+          date: dateIn,
+          time: timeIn.slice(0, 5)
         },
         checkOut: {
-          date: faker.date.anytime().toISOString().slice(0, 10),
-          time: new Date(faker.date.future().toISOString()).toLocaleTimeString('en-US', { hour12: true })
+          date: dateOut,
+          time: timeOut.slice(0, 5)
         },
         specialRequest: faker.lorem.sentence({ min: 5, max: 10 }),
         roomType: faker.helpers.arrayElement(['Single Bed', 'Double Bed', 'Double Superior', 'Suite']),
