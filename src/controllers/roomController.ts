@@ -1,23 +1,19 @@
 import { Request, Response } from 'express';
-import roomList from '../data/roomList.json';
-import { Room } from '../interfaces/room';
-import { asyncRequest } from '../services/getData.service';
+import Room from '../models/Room';
 import { catchedAsyc } from '../utils/catchedAsyc';
 import { ClientError } from '../utils/errorClient';
 import responseCliente from '../utils/responseCliente';
 
 const getAllRooms = async (req: Request, res: Response) => {
-  const rooms = await asyncRequest<Room>({ data: roomList });
+  const roomsList = await Room.find();
 
-  return responseCliente(res, 200, rooms);
+  return responseCliente(res, 200, roomsList);
 };
 
 const getRoomById = async (req: Request, res: Response) => {
   const { id } = req.params;
-
-  const response = (await asyncRequest<Room>({ data: roomList })) as Room[];
-
-  const room = response.find(room => room.room.id === id);
+  if (!id) throw new ClientError('Id is required', 400);
+  const room = await Room.findOne({ 'room.id': id });
 
   if (!room) throw new ClientError(`Room with id ${id} not found`, 404);
 
