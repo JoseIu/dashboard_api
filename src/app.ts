@@ -5,7 +5,6 @@ import bookingsRouter from './routes/bookings.routes';
 import employeeRoutes from './routes/employee.routes';
 import loginRoutes from './routes/login.routes';
 import roomsRouter from './routes/rooms.routes';
-import { setupSwagger } from './swagger.config';
 import { ClientError } from './utils/errorClient';
 
 const PORT = process.env.PORT || 3000;
@@ -19,7 +18,7 @@ expresApp.use(bookingsRouter);
 expresApp.use(employeeRoutes);
 expresApp.use(loginRoutes);
 
-setupSwagger(expresApp);
+// setupSwagger(expresApp);
 expresApp.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   if ('statusCode' in err) {
     res.status((err as ClientError).statusCode).json({
