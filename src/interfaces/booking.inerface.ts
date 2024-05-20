@@ -1,4 +1,4 @@
-export interface Booking {
+export interface BookingInterface {
   orderDate: string;
   checkin: Check;
   checkOut: Check;
