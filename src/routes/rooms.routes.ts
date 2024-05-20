@@ -4,6 +4,6 @@ import checkToken from '../middleware/checkToken';
 const roomsRouter = express.Router();
 
 roomsRouter.get('/rooms', checkToken, roomController.getAllRooms);
-roomsRouter.get('/room/:id', checkToken, roomController.getRoomById);
+roomsRouter.get('/room/:id?', checkToken, roomController.getRoomById);
 
 export default roomsRouter;
