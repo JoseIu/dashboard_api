@@ -19,7 +19,32 @@ const getRoomById = async (req: Request, res: Response) => {
 
   return responseCliente(res, 200, room);
 };
+
+const createNewRoom = async (req: Request, res: Response) => {
+  const newRoom = new Room(req.body);
+  await newRoom.save();
+  return responseCliente(res, 201, newRoom);
+};
+
+const updateRoom = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const roomToUpdate = await Room.findById(id);
+  if (!roomToUpdate) throw new ClientError(`Room with id ${id} not found`, 404);
+  await roomToUpdate.updateOne(req.body);
+  return responseCliente(res, 200, 'Room updated');
+};
+
+const deleteRoom = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const roomToDelete = await Room.findById(id);
+  if (!roomToDelete) throw new ClientError(`Room with id ${id} not found`, 404);
+  await roomToDelete.deleteOne();
+  return responseCliente(res, 200, 'Room deleted');
+};
 export default {
   getAllRooms: catchedAsyc(getAllRooms),
-  getRoomById: catchedAsyc(getRoomById)
+  getRoomById: catchedAsyc(getRoomById),
+  createNewRoom: catchedAsyc(createNewRoom),
+  updateRoom: catchedAsyc(updateRoom),
+  deleteRoom: catchedAsyc(deleteRoom)
 };
