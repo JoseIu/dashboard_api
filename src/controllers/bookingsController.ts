@@ -25,7 +25,19 @@ const getBookingById = async (req: Request, res: Response) => {
   return responseCliente(res, 200, booking);
 };
 
+const createNewBooking = async (req: Request, res: Response) => {
+  console.log(req.body);
+  try {
+    const newBooking = new Booking(req.body);
+    const newBookingSaved = await newBooking.save();
+    return responseCliente(res, 201, newBookingSaved);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export default {
   getAllBookings: catchedAsyc(getAllBookings),
-  getBookingById: catchedAsyc(getBookingById)
+  getBookingById: catchedAsyc(getBookingById),
+  createNewBooking: catchedAsyc(createNewBooking)
 };
