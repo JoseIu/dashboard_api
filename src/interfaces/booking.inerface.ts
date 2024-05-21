@@ -16,7 +16,7 @@ export interface Check {
 export interface GuestClass {
   name: string;
   lastName: string;
-  reservationID: string;
+  reserVationId: string;
   img: string;
 }
 
