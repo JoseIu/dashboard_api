@@ -26,7 +26,6 @@ const getBookingById = async (req: Request, res: Response) => {
 };
 
 const createNewBooking = async (req: Request, res: Response) => {
-  console.log(req.body);
   try {
     const newBooking = new Booking(req.body);
     const newBookingSaved = await newBooking.save();
@@ -36,8 +35,34 @@ const createNewBooking = async (req: Request, res: Response) => {
   }
 };
 
+const updateBooking = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const booking = await Booking.findById(id);
+
+  if (!booking) throw new ClientError(`Booking with id ${id} not found`, 404);
+
+  const { orderDate, checkin, checkOut, roomType, specialRequest, guest, status } = req.body;
+
+  booking.orderDate = orderDate;
+  booking.checkin!.date = checkin.date;
+  booking.checkin!.time = checkin.time;
+  booking.checkOut!.date = checkOut.date;
+  booking.checkOut!.time = checkOut.time;
+  booking.roomType = roomType;
+  booking.specialRequest = specialRequest;
+  booking.guest!.name = guest.name;
+  booking.guest!.lastName = guest.lastName;
+  booking.guest!.img = guest.img;
+  booking.guest!.reserVationId = guest.reserVationId;
+  booking.status = status;
+
+  await booking.save();
+  return responseCliente(res, 200, booking);
+};
+
 export default {
   getAllBookings: catchedAsyc(getAllBookings),
   getBookingById: catchedAsyc(getBookingById),
-  createNewBooking: catchedAsyc(createNewBooking)
+  createNewBooking: catchedAsyc(createNewBooking),
+  updateBooking: catchedAsyc(updateBooking)
 };
