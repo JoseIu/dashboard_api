@@ -41,28 +41,25 @@ const updateBooking = async (req: Request, res: Response) => {
 
   if (!booking) throw new ClientError(`Booking with id ${id} not found`, 404);
 
-  const { orderDate, checkin, checkOut, roomType, specialRequest, guest, status } = req.body;
+  await booking.updateOne(req.body);
 
-  booking.orderDate = orderDate;
-  booking.checkin!.date = checkin.date;
-  booking.checkin!.time = checkin.time;
-  booking.checkOut!.date = checkOut.date;
-  booking.checkOut!.time = checkOut.time;
-  booking.roomType = roomType;
-  booking.specialRequest = specialRequest;
-  booking.guest!.name = guest.name;
-  booking.guest!.lastName = guest.lastName;
-  booking.guest!.img = guest.img;
-  booking.guest!.reserVationId = guest.reserVationId;
-  booking.status = status;
+  return responseCliente(res, 200, 'Booking updated');
+};
 
-  await booking.save();
-  return responseCliente(res, 200, booking);
+const deleteBooking = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const booking = await Booking.findById(id);
+
+  if (!booking) throw new ClientError(`Booking with id ${id} not found`, 404);
+
+  await booking.deleteOne();
+  return responseCliente(res, 200, 'Booking deleted');
 };
 
 export default {
   getAllBookings: catchedAsyc(getAllBookings),
   getBookingById: catchedAsyc(getBookingById),
   createNewBooking: catchedAsyc(createNewBooking),
-  updateBooking: catchedAsyc(updateBooking)
+  updateBooking: catchedAsyc(updateBooking),
+  deleteBooking: catchedAsyc(deleteBooking)
 };
