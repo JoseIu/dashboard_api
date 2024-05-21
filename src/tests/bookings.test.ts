@@ -33,6 +33,35 @@ describe('Get /bookings', () => {
     });
   });
 });
+
+describe('Get /booking/:id', () => {
+  const token = process.env.TOKEN_TEST;
+
+  test('Should response with a booking searched by ID', async () => {
+    const response = await request(app)
+      .get('/booking/664b9fcc6c5fc37b93f17182')
+      .set('Authorization', `Bearer ${token}`);
+
+    expect(response.body).toMatchObject({
+      error: false,
+      data: expect.any(Object)
+    });
+  });
+  test('Should response with a status 404 if room not with ID not exist ', async () => {
+    const response = await request(app)
+      .get('/booking/664b9fcc6c5fc37b93f171cc')
+      .set('Authorization', `Bearer ${token}`);
+
+    expect(response.status).toBe(404);
+  });
+  test('Should response with a status 400 if ID is invalid ', async () => {
+    const response = await request(app)
+      .get('/booking/664b9fcc6c5fc37b93f171')
+      .set('Authorization', `Bearer ${token}`);
+
+    expect(response.status).toBe(400);
+  });
+});
 afterAll(async () => {
   server.close();
   await mongoose.disconnect();
