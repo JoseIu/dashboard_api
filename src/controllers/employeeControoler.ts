@@ -22,7 +22,39 @@ const getEmployeeById = async (req: Request, res: Response) => {
   return responseCliente(res, 200, employee);
 };
 
+const createNewEmployee = async (req: Request, res: Response) => {
+  try {
+    const newEployee = new Employee(req.body);
+    await newEployee.save();
+    return responseCliente(res, 201, newEployee);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const updateEmployee = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const employeToEdit = await Employee.findById(id);
+
+  if (!employeToEdit) throw new ClientError(`Employee with id ${id} not found`, 404);
+  await employeToEdit.updateOne(req.body);
+  return responseCliente(res, 200, 'Employee updated');
+};
+
+const deleteEmployee = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  const employeeToDelete = await Employee.findById(id);
+  if (!employeeToDelete) throw new ClientError(`Employee with id ${id} not found`, 404);
+  await employeeToDelete.deleteOne();
+
+  return responseCliente(res, 200, 'Employee deleted');
+};
+
 export default {
   getAllEmployees: catchedAsyc(getAllEmployees),
-  getEmployeeById: catchedAsyc(getEmployeeById)
+  getEmployeeById: catchedAsyc(getEmployeeById),
+  createNewEmployee: catchedAsyc(createNewEmployee),
+  updateEmployee: catchedAsyc(updateEmployee),
+  deleteEmployee: catchedAsyc(deleteEmployee)
 };
