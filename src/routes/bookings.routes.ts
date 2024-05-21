@@ -12,5 +12,6 @@ bookingsRouter.get('/booking/:id?', checkToken, bookingController.getBookingById
 bookingsRouter.post('/booking/add-booking', checkToken, createNewBookingDTO, bookingController.createNewBooking);
 
 bookingsRouter.put('/booking/update-booking/:id?', checkToken, bookingController.updateBooking);
+bookingsRouter.delete('/booking/delete-booking/:id?', checkToken, bookingController.deleteBooking);
 
 export default bookingsRouter;
