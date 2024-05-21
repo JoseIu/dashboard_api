@@ -7,7 +7,6 @@ import loginRoutes from './routes/login.routes';
 import roomsRouter from './routes/rooms.routes';
 import { ClientError } from './utils/errorClient';
 
-const PORT = process.env.PORT || 3000;
 const expresApp = express();
 conectarDB();
 
