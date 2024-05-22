@@ -7,7 +7,9 @@ const conectarDB = async () => {
 
     const url = `${db.connection.host}:${db.connection.port}`;
 
-    console.log(`MongoDB conected in: ${url}`);
+    if (url) {
+      console.log('MongoDB connected');
+    }
   } catch (error) {
     console.log(`Error: ${error}`);
     process.exit(1);
