@@ -26,13 +26,9 @@ const getBookingById = async (req: Request, res: Response) => {
 };
 
 const createNewBooking = async (req: Request, res: Response) => {
-  try {
-    const newBooking = new Booking(req.body);
-    const newBookingSaved = await newBooking.save();
-    return responseCliente(res, 201, newBookingSaved);
-  } catch (error) {
-    console.log(error);
-  }
+  const newBooking = new Booking(req.body);
+  const newBookingSaved = await newBooking.save();
+  return responseCliente(res, 200, newBookingSaved);
 };
 
 const updateBooking = async (req: Request, res: Response) => {
