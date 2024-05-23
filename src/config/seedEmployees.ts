@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 import 'dotenv/config';
 import { MongoClient } from 'mongodb';
-import { Employee } from '../interfaces/employee.interface';
+import { EmployeeInterface } from '../interfaces/employee.interface';
 const uri = process.env.MONGO_URI;
 const seedDB = async () => {
   const client = new MongoClient(uri!);
@@ -14,10 +14,10 @@ const seedDB = async () => {
 
     await collection.drop();
 
-    let employeesList: Employee[] = [];
+    let employeesList: EmployeeInterface[] = [];
 
     for (let i = 0; i < 20; i++) {
-      let employee: Employee = {
+      let employee: EmployeeInterface = {
         employee: {
           image: faker.image.avatar(),
           firstName: faker.person.firstName(),
