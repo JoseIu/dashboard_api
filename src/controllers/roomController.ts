@@ -21,9 +21,13 @@ const getRoomById = async (req: Request, res: Response) => {
 };
 
 const createNewRoom = async (req: Request, res: Response) => {
-  const newRoom = new Room(req.body);
-  await newRoom.save();
-  return responseCliente(res, 201, newRoom);
+  try {
+    const newRoom = new Room(req.body);
+    await newRoom.save();
+    return responseCliente(res, 200, newRoom);
+  } catch (error) {
+    throw new ClientError('Invalid room format', 400);
+  }
 };
 
 const updateRoom = async (req: Request, res: Response) => {
