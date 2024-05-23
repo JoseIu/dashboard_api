@@ -14,6 +14,10 @@ const loginControlller = async (req: Request, res: Response) => {
   const user = await User.findOne({ email });
   if (!user) throw new ClientError('User not found', 404);
 
+  //check Password
+  if ((await user.checkPWD(password)) === false) throw new ClientError('Invalid Password', 400);
+
+  //generate token and send it
   const token = jwt.sign({ id: user.id, email: user.email }, SECRET_KEY!, { expiresIn: 86400 });
   return responseCliente(res, 200, { token });
 };
