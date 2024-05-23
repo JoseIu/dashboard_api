@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express, { NextFunction, Request, Response } from 'express';
 import conectarDB from './config/db';
 import bookingsRouter from './routes/bookings.routes';
+import contactsRouter from './routes/contacts.routes';
 import employeeRoutes from './routes/employee.routes';
 import loginRoutes from './routes/login.routes';
 import roomsRouter from './routes/rooms.routes';
@@ -16,6 +17,7 @@ expresApp.use(roomsRouter);
 expresApp.use(bookingsRouter);
 expresApp.use(employeeRoutes);
 expresApp.use(loginRoutes);
+expresApp.use(contactsRouter);
 
 // setupSwagger(expresApp);
 expresApp.use((err: Error, req: Request, res: Response, next: NextFunction) => {
