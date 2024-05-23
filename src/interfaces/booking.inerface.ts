@@ -1,5 +1,4 @@
 export interface BookingInterface {
-  _id?: string;
   orderDate: string;
   checkin: Check;
   checkOut: Check;
