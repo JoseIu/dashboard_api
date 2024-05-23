@@ -26,9 +26,9 @@ const createNewEmployee = async (req: Request, res: Response) => {
   try {
     const newEployee = new Employee(req.body);
     await newEployee.save();
-    return responseCliente(res, 201, newEployee);
+    return responseCliente(res, 200, newEployee);
   } catch (error) {
-    console.log(error);
+    throw new ClientError('Invalid employee Format', 400);
   }
 };
 
