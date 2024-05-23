@@ -2,6 +2,7 @@ import Ajv, { JSONSchemaType } from 'ajv';
 import addErros from 'ajv-errors';
 import addFormas from 'ajv-formats';
 import { NextFunction, Request, Response } from 'express';
+import { ClientError } from '../utils/errorClient';
 
 interface LoginTDO {
   email: string;
@@ -36,8 +37,8 @@ const validateSchema = ajv.compile(logigTDOSchema);
 
 const loginDTO = (req: Request, res: Response, next: NextFunction) => {
   const isDTOValid = validateSchema(req.body);
-
-  if (!isDTOValid) return res.status(400).json(validateSchema.errors?.map(error => error.message));
+  const messageError = validateSchema.errors?.map(error => error.message).join(', ');
+  if (!isDTOValid) throw new ClientError(messageError!, 400);
   next();
 };
 
