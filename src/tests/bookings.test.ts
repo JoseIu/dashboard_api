@@ -61,7 +61,6 @@ describe('Get /booking/:id', () => {
 });
 
 describe('POST /booking', () => {
-  console.log('HOLAAAAAAAAAA');
   const token = process.env.TOKEN_TEST!;
 
   const newBooking: BookingInterface = {
