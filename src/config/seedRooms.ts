@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 import 'dotenv/config';
 import { MongoClient } from 'mongodb';
-import { Room } from '../interfaces/room';
+import { RoomInterface } from '../interfaces/room';
 const uri = process.env.MONGO_URI;
 const seedDB = async () => {
   const client = new MongoClient(uri!);
@@ -14,7 +14,7 @@ const seedDB = async () => {
 
     await collection.drop();
 
-    let roomsList: Room[] = [];
+    let roomsList: RoomInterface[] = [];
 
     for (let i = 0; i < 20; i++) {
       let room = {
