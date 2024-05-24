@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker';
-import brypt from 'bcrypt';
+const bcrypt = require('bcryptjs');
+
 import 'dotenv/config';
 import { MongoClient } from 'mongodb';
 import { UserInterface } from '../interfaces/user.interface';
@@ -19,22 +20,22 @@ const seedDB = async () => {
       {
         name: faker.person.firstName(),
         email: 'prueba@prueba.com',
-        password: brypt.hashSync('prueba', 10)
+        password: bcrypt.hashSync('prueba', 10)
       },
       {
         name: faker.person.firstName(),
         email: faker.internet.email(),
-        password: brypt.hashSync('fakePassword', 10)
+        password: bcrypt.hashSync('fakePassword', 10)
       },
       {
         name: faker.person.firstName(),
         email: faker.internet.email(),
-        password: brypt.hashSync('fakePassword', 10)
+        password: bcrypt.hashSync('fakePassword', 10)
       },
       {
         name: faker.person.firstName(),
         email: faker.internet.email(),
-        password: brypt.hashSync('fakePassword', 10)
+        password: bcrypt.hashSync('fakePassword', 10)
       }
     ];
 
