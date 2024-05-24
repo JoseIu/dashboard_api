@@ -1,5 +1,5 @@
-import bcrypt from 'bcrypt';
 import mongoose from 'mongoose';
+const bcrypt = require('bcryptjs');
 interface IUser extends Document {
   name: string;
   email: string;
