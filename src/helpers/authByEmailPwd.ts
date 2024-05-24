@@ -1,7 +1,7 @@
 import users from '../data/users.json';
-import { User } from '../interfaces/user.interface';
+import { UserInterface } from '../interfaces/user.interface';
 
-const authByEmailPwd = (email: string, password: string): User => {
+const authByEmailPwd = (email: string, password: string): UserInterface => {
   const existUser = users.find(user => user.email === email);
 
   if (!existUser) throw new Error();
