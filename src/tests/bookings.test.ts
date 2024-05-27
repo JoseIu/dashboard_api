@@ -78,7 +78,7 @@ describe('POST /booking', () => {
     guest: {
       name: 'TEST',
       lastName: 'TEST',
-      reserVationId: '1234567890',
+      reservationID: '1234567890',
       img: 'https://www.google.com'
     },
     status: 'In Progress'
@@ -139,7 +139,7 @@ describe('PUT /booking/:id', () => {
     guest: {
       name: 'TEST-PUT',
       lastName: 'TEST-PUT',
-      reserVationId: '1234567890',
+      reservationID: '1234567890',
       img: 'https://www.google.com'
     },
     status: 'In Progress'
@@ -178,7 +178,7 @@ describe('DELTE /booking/:id', () => {
     guest: {
       name: 'TEST-DELETE',
       lastName: 'TEST-DELETE',
-      reserVationId: '1234567890',
+      reservationID: '1234567890',
       img: 'https://www.google.com'
     },
     status: 'In Progress'
