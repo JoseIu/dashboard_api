@@ -20,7 +20,7 @@ const bookingSchema = new mongoose.Schema(
     guest: {
       name: { type: String, required: true },
       lastName: { type: String, required: true },
-      reserVationId: { type: String, required: true },
+      reservationID: { type: String, required: true },
       img: { type: String, required: true }
     }
   },
