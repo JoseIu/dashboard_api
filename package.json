@@ -9,7 +9,7 @@
     "build": "rimraf ./dist && tsc",
     "start": "npm run build && node dist/app.js",
     "deploy": "npm run build && serverless deploy",
-    "seed": "ts-node ./src/config/seedUsers.ts"
+    "seed": "ts-node ./src/config/seedBookings.ts"
   },
   "keywords": [],
   "author": "",
