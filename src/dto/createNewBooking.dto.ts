@@ -41,13 +41,13 @@ const createNewBookingDTOSchema: JSONSchemaType<BookingInterface> = {
       properties: {
         name: { type: 'string' },
         lastName: { type: 'string' },
-        reserVationId: { type: 'string' },
+        reservationID: { type: 'string' },
         img: { type: 'string' }
       },
       errorMessage: {
         type: 'Invalid type, must be a string'
       },
-      required: ['name', 'lastName', 'reserVationId', 'img']
+      required: ['name', 'lastName', 'reservationID', 'img']
     }
   },
   required: ['orderDate', 'checkin', 'checkOut', 'roomType', 'status', 'guest'],
