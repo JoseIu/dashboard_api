@@ -19,7 +19,9 @@ const loginControlller = async (req: Request, res: Response) => {
 
   //generate token and send it
   const token = jwt.sign({ id: user.id, email: user.email }, SECRET_KEY!, { expiresIn: 86400 });
-  return responseCliente(res, 200, { token });
+  //generate a userObject without password
+  const userToSend = { id: user.id, name: user.name, email: user.email };
+  return responseCliente(res, 200, { user: userToSend, token });
 };
 
 export default {
