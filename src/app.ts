@@ -1,4 +1,6 @@
+import cors from 'cors';
 import 'dotenv/config';
+
 import express, { NextFunction, Request, Response } from 'express';
 import conectarDB from './config/db';
 import bookingsRouter from './routes/bookings.routes';
@@ -11,6 +13,15 @@ import { ClientError } from './utils/errorClient';
 const expresApp = express();
 conectarDB();
 
+const dominPermit = [process.env.FRONT_URL];
+const corsOptions = {
+  origin: function (origin: string | undefined, callback: (err: Error | null, allow: boolean) => void) {
+    if (!origin || dominPermit.indexOf(origin) !== -1) return callback(null, true);
+    else callback(new Error('No permitido por CORS'), false);
+  }
+};
+
+expresApp.use(cors(corsOptions));
 expresApp.use(express.json());
 expresApp.use(express.text());
 expresApp.use(roomsRouter);
