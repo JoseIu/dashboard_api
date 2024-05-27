@@ -40,7 +40,7 @@ const seedDB = async () => {
         guest: {
           name: faker.person.firstName(),
           lastName: faker.person.lastName(),
-          reserVationId: `AB${faker.number.int({ min: 1, max: 10 })}`,
+          reservationID: `AB${faker.number.int({ min: 1, max: 10 })}`,
           img: faker.image.avatar()
         }
       };
