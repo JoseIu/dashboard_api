@@ -1,9 +1,16 @@
 import mongoose from 'mongoose';
+import { BookingInterface } from '../interfaces/booking.inerface';
 
-const bookingSchema = new mongoose.Schema(
+const bookingSchema = new mongoose.Schema<BookingInterface>(
   {
+    guest: {
+      name: { type: String, required: true },
+      lastName: { type: String, required: true },
+      reservationID: { type: String, required: true },
+      img: { type: String, required: true }
+    },
     orderDate: {
-      type: Date,
+      type: String,
       required: true
     },
     checkin: {
@@ -14,15 +21,11 @@ const bookingSchema = new mongoose.Schema(
       date: { type: Date, required: true },
       time: { type: String, required: true }
     },
-    specialRequest: String,
     roomType: String,
-    status: String,
-    guest: {
-      name: { type: String, required: true },
-      lastName: { type: String, required: true },
-      reservationID: { type: String, required: true },
-      img: { type: String, required: true }
-    }
+    roomNumber: String,
+    roomID: String,
+    specialRequest: String,
+    status: String
   },
   { versionKey: false }
 );
