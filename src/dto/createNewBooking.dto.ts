@@ -8,6 +8,19 @@ import { ClientError } from '../utils/errorClient';
 const createNewBookingDTOSchema: JSONSchemaType<BookingInterface> = {
   type: 'object',
   properties: {
+    guest: {
+      type: 'object',
+      properties: {
+        name: { type: 'string' },
+        lastName: { type: 'string' },
+        reservationID: { type: 'string' },
+        img: { type: 'string' }
+      },
+      errorMessage: {
+        type: 'Invalid type, must be a string'
+      },
+      required: ['name', 'lastName', 'reservationID', 'img']
+    },
     orderDate: { type: 'string', format: 'date' },
     checkin: {
       type: 'object',
@@ -35,20 +48,9 @@ const createNewBookingDTOSchema: JSONSchemaType<BookingInterface> = {
     },
     specialRequest: { type: 'string' },
     roomType: { type: 'string' },
-    status: { type: 'string', enum: ['Check In', 'Check Out', 'In Progress'] },
-    guest: {
-      type: 'object',
-      properties: {
-        name: { type: 'string' },
-        lastName: { type: 'string' },
-        reservationID: { type: 'string' },
-        img: { type: 'string' }
-      },
-      errorMessage: {
-        type: 'Invalid type, must be a string'
-      },
-      required: ['name', 'lastName', 'reservationID', 'img']
-    }
+    roomNumber: { type: 'string' },
+    roomID: { type: 'string' },
+    status: { type: 'string', enum: ['Check In', 'Check Out', 'In Progress'] }
   },
   required: ['orderDate', 'checkin', 'checkOut', 'roomType', 'status', 'guest'],
   additionalProperties: false
