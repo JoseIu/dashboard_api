@@ -1,17 +1,20 @@
 import mongoose from 'mongoose';
+import { RoomInterface } from '../interfaces/room';
 
-const roomSchema = new mongoose.Schema(
+const roomSchema = new mongoose.Schema<RoomInterface>(
   {
-    room: {
-      image: { type: String, required: true },
-      number: { type: String, required: true },
-      id: { type: String, required: true }
-    },
+    roomImages: { type: String, required: true },
+    roomNumber: { type: String, required: true },
+    // id: { type: String, required: true }
+
     roomType: { type: String, required: true },
-    amenities: { type: [String], required: true },
+    description: { type: String, required: true },
+    offer: { type: Boolean, required: true },
+    offerPrice: { type: Number, required: true },
     price: { type: Number, required: true },
-    offer: { type: Number, required: true },
-    status: { type: Boolean, required: true }
+    discount: { type: Number, required: true },
+    status: { type: Boolean, required: true },
+    amenities: { type: [String], required: true }
   },
   { versionKey: false }
 );
