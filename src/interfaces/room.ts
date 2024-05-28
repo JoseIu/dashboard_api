@@ -1,14 +1,26 @@
 export interface RoomInterface {
-  room: RoomClass;
+  _id?: string;
+  roomImages: string;
+  roomNumber: string;
   roomType: string;
-  amenities: string[];
+  description: string;
+  offer: boolean;
+  offerPrice?: number;
   price: number;
-  offer: number;
+  discount: number;
   status: boolean;
+  amenities: string[];
 }
 
-export interface RoomClass {
-  image: string;
-  number: string;
-  id: string;
+export interface RoomInterfaceSeed {
+  roomImages: string;
+  roomNumber: string;
+  roomType: string;
+  description: string;
+  offer: boolean;
+  offerPrice?: number;
+  price: number;
+  discount: number;
+  status: boolean;
+  amenities: string[];
 }
