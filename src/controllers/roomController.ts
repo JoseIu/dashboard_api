@@ -13,7 +13,7 @@ const getAllRooms = async (req: Request, res: Response) => {
 const getRoomById = async (req: Request, res: Response) => {
   const { id } = req.params;
   if (!id) throw new ClientError('Id is required', 400);
-  const room = await Room.findOne({ 'room.id': id });
+  const room = await Room.findOne({ _id: id });
 
   if (!room) throw new ClientError(`Room with id ${id} not found`, 404);
 
