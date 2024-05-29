@@ -18,8 +18,6 @@ const getBookingById = async (req: Request, res: Response) => {
 
   const booking = await Booking.findOne({ _id: id });
 
-  console.log(booking);
-
   if (!booking) throw new ClientError(`Booking with id ${id} not found`, 404);
 
   return responseCliente(res, 200, booking);
