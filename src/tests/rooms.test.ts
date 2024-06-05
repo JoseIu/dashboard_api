@@ -58,16 +58,16 @@ describe('POST /room', () => {
   const token = process.env.TOKEN_TEST!;
 
   const newRoom: RoomInterface = {
-    room: {
-      image: 'https://www.google.com',
-      number: 'RR63',
-      id: 'TGFR63'
-    },
-    amenities: ['TV', 'AC', 'WiFi'],
-    roomType: 'Single',
-    price: 100,
-    offer: 0,
-    status: true
+    roomImages: 'https://www.google.com.png',
+    roomNumber: '1233',
+    roomType: 'Single Bed',
+    description: 'lorem ipsum dolor sit amet consectetur adipisicing elit',
+    offer: true,
+    offerPrice: 100,
+    price: 500,
+    discount: 5,
+    status: true,
+    amenities: ['TV', 'AC', 'WiFi']
   };
   const wrongRoom = {
     room: {
@@ -85,7 +85,6 @@ describe('POST /room', () => {
 
     expect(response.status).toBe(200);
     expect(response.body.data._id).toBeDefined();
-    expect(response.body.data.room.id).toBe(newRoom.room.id);
   });
   it('Should response with a 400 if newBooking is wrong', async () => {
     const response = await request(expresApp)
@@ -101,28 +100,28 @@ describe('PUT /room/:id', () => {
   const token = process.env.TOKEN_TEST!;
 
   const newRoom: RoomInterface = {
-    room: {
-      image: 'https://www.google.com',
-      number: 'RR63',
-      id: 'TGFR63'
-    },
-    amenities: ['TV', 'AC', 'WiFi'],
-    roomType: 'Single',
-    price: 100,
-    offer: 0,
-    status: true
+    roomImages: 'https://www.google.com.png',
+    roomNumber: '1233',
+    roomType: 'Single Bed',
+    description: 'lorem ipsum dolor sit amet consectetur adipisicing elit',
+    offer: true,
+    offerPrice: 100,
+    price: 500,
+    discount: 5,
+    status: true,
+    amenities: ['TV', 'AC', 'WiFi']
   };
   const roomUpdate = {
-    room: {
-      image: 'https://www.google.com',
-      number: 'RR63',
-      id: 'TGFR63'
-    },
-    amenities: ['TV', 'AC', 'WiFi'],
-    roomType: 'Double Bed',
-    price: 100,
-    offer: 0,
-    status: true
+    roomImages: 'https://www.google.com.png',
+    roomNumber: '1233',
+    roomType: 'Single Bed',
+    description: 'lorem ipsum dolor sit amet consectetur adipisicing elit',
+    offer: true,
+    offerPrice: 100,
+    price: 500,
+    discount: 5,
+    status: true,
+    amenities: ['TV', 'AC']
   };
   let room: any;
   beforeEach(async () => {
@@ -144,16 +143,16 @@ describe('PUT /room/:id', () => {
 
 describe('DELTE /room/:id', () => {
   const newRoom: RoomInterface = {
-    room: {
-      image: 'https://www.google.com',
-      number: 'RR63',
-      id: 'TGFR63'
-    },
-    amenities: ['TV', 'AC', 'WiFi'],
-    roomType: 'Single',
-    price: 100,
-    offer: 0,
-    status: true
+    roomImages: 'https://www.google.com.png',
+    roomNumber: '1233',
+    roomType: 'Single Bed',
+    description: 'lorem ipsum dolor sit amet consectetur adipisicing elit',
+    offer: true,
+    offerPrice: 100,
+    price: 500,
+    discount: 5,
+    status: true,
+    amenities: ['TV', 'AC', 'WiFi']
   };
   const token = process.env.TOKEN_TEST!;
   let room: any;

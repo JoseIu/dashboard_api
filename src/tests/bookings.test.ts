@@ -73,6 +73,8 @@ describe('POST /booking', () => {
       date: '2021-09-01',
       time: '12:00'
     },
+    roomID: '1234567890',
+    roomNumber: '6655ff57f926766f49be6ce7',
     specialRequest: 'No special requests',
     roomType: 'Single',
     guest: {

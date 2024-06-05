@@ -57,33 +57,32 @@ describe('POST /employee', () => {
   const token = process.env.TOKEN_TEST!;
 
   const newEmployee: EmployeeInterface = {
-    employee: {
-      image: 'https://www.google.com',
-      firstName: 'TEST',
-      lastName: 'TEST',
-      employeeId: '1234567890',
-      startDate: '2021-09-01'
-    },
+    image: 'https://www.google.com',
+    firstName: 'TEST',
+    lastName: 'TEST',
+    password: '123456',
+    role: 'Manager',
+    startDate: '2021-09-01',
     description: 'TEST-DESCRIPTION',
-    contact: {
-      phone: '1234567890',
-      email: 'test@test.com'
-    },
+
+    phone: '1234567890',
+    email: 'test@test.com',
+
     status: true
   };
   const wrongBooking = {
-    employee: {
-      image: 'https://www.google.com',
-      firstName: 'TEST',
-      lastName: 'TEST',
-      employeeId: '1234567890',
-      startDate: '2021-09-01'
-    },
+    image: 'https://www.google.com',
+    firstName: 'TEST',
+    lastName: 'TEST',
+    password: '123456',
+
+    startDate: '2021-09-01',
     description: 'TEST-DESCRIPTION',
-    contact: {
-      phone: '1234567890',
-      email: 'test@test.com'
-    }
+
+    phone: '1234567890',
+    email: 'test@test.com',
+
+    status: true
   };
 
   it('Should response with a 200 status code', async () => {
@@ -94,7 +93,7 @@ describe('POST /employee', () => {
 
     expect(response.status).toBe(200);
     expect(response.body.data._id).toBeDefined();
-    expect(response.body.data.employee.firstName).toBe(newEmployee.employee.firstName);
+    expect(response.body.data.firstName).toBe(newEmployee.firstName);
   });
   it('Should response with a 400 if newEmployee is wrong', async () => {
     const response = await request(expresApp)
@@ -110,33 +109,31 @@ describe('PUT /employee/:id', () => {
   const token = process.env.TOKEN_TEST!;
 
   const newEmployee: EmployeeInterface = {
-    employee: {
-      image: 'https://www.google.com',
-      firstName: 'TEST',
-      lastName: 'TEST',
-      employeeId: '1234567890',
-      startDate: '2021-09-01'
-    },
+    image: 'https://www.google.com',
+    firstName: 'TEST',
+    lastName: 'TEST',
+    password: '123456',
+    role: 'Manager',
+    startDate: '2021-09-01',
     description: 'TEST-DESCRIPTION',
-    contact: {
-      phone: '1234567890',
-      email: 'test@test.com'
-    },
+
+    phone: '1234567890',
+    email: 'test@test.com',
+
     status: true
   };
   const newEmployeeUpdate: EmployeeInterface = {
-    employee: {
-      image: 'https://www.google.com',
-      firstName: 'TEST-UDPATE',
-      lastName: 'TEST',
-      employeeId: '1234567890',
-      startDate: '2021-09-01'
-    },
+    image: 'https://www.google.com',
+    firstName: 'TEST UDATED',
+    lastName: 'TEST',
+    password: '123456',
+    role: 'Manager',
+    startDate: '2021-09-01',
     description: 'TEST-DESCRIPTION',
-    contact: {
-      phone: '1234567890',
-      email: 'test@test.com'
-    },
+
+    phone: '1234567890',
+    email: 'test@test.com',
+
     status: true
   };
   let employee: any;
@@ -158,18 +155,17 @@ describe('PUT /employee/:id', () => {
 });
 describe('DELTE /employee/:id', () => {
   const newEmployee: EmployeeInterface = {
-    employee: {
-      image: 'https://www.google.com',
-      firstName: 'TEST',
-      lastName: 'TEST',
-      employeeId: '1234567890',
-      startDate: '2021-09-01'
-    },
+    image: 'https://www.google.com',
+    firstName: 'TEST',
+    lastName: 'TEST',
+    password: '123456',
+    role: 'Manager',
+    startDate: '2021-09-01',
     description: 'TEST-DESCRIPTION',
-    contact: {
-      phone: '1234567890',
-      email: 'test@test.com'
-    },
+
+    phone: '1234567890',
+    email: 'test@test.com',
+
     status: true
   };
   const token = process.env.TOKEN_TEST!;
