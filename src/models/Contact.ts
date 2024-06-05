@@ -1,5 +1,4 @@
 import mongoose, { Schema } from 'mongoose';
-import { Contact } from '../interfaces/employee.interface';
 
 const contactShema = new Schema(
   {
@@ -16,6 +15,6 @@ const contactShema = new Schema(
   },
   { versionKey: false }
 );
-const Contact = mongoose.model<Contact>('Contact', contactShema);
+const Contact = mongoose.model('Contact', contactShema);
 
 export default Contact;
