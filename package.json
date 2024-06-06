@@ -47,6 +47,8 @@
     "express": "4.19.2",
     "jsonwebtoken": "9.0.2",
     "mongoose": "8.4.0",
+    "mysql2": "^3.10.0",
+    "sequelize": "^6.37.3",
     "serverless-http": "3.2.0",
     "swagger-ui-express": "^5.0.0",
     "yamljs": "^0.3.0"
