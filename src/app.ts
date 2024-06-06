@@ -2,16 +2,18 @@ import cors from 'cors';
 import 'dotenv/config';
 
 import express, { NextFunction, Request, Response } from 'express';
-import conectarDB from './config/db';
+import dbSql from './config/sql';
 import bookingsRouter from './routes/bookings.routes';
 import contactsRouter from './routes/contacts.routes';
 import employeeRoutes from './routes/employee.routes';
 import loginRoutes from './routes/login.routes';
 import roomsRouter from './routes/rooms.routes';
 import { ClientError } from './utils/errorClient';
-
 const expresApp = express();
-conectarDB();
+dbSql
+  .authenticate()
+  .then(() => console.log('Conectado a la base de datos SQL'))
+  .catch(err => console.log(err));
 
 const dominPermit = [process.env.FRONT_URL];
 const corsOptions = {
