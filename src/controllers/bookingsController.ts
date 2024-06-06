@@ -1,14 +1,16 @@
 import { Request, Response } from 'express';
 import mongoose from 'mongoose';
-import { BookingInterface } from '../interfaces/booking.inerface';
 import Booking from '../models/Booking';
+import { BookingSql } from '../models/sql/BookingSql';
 import { catchedAsyc } from '../utils/catchedAsyc';
 import { ClientError } from '../utils/errorClient';
 import responseCliente from '../utils/responseCliente';
 
 const getAllBookings = async (req: Request, res: Response) => {
-  const bookingsList: BookingInterface[] = await Booking.find();
+  // const bookingsList: BookingInterface[] = await Booking.find();
 
+  const bookingsList = await BookingSql.findAll();
+  console.log(bookingsList);
   return responseCliente(res, 200, bookingsList);
 };
 const getBookingById = async (req: Request, res: Response) => {
