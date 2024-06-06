@@ -1,12 +1,20 @@
 import { Request, Response } from 'express';
 import Room from '../models/Room';
+import { RoomAmenitiesSql, RoomSql } from '../models/sql/RoomSql';
 import { catchedAsyc } from '../utils/catchedAsyc';
 import { ClientError } from '../utils/errorClient';
 import responseCliente from '../utils/responseCliente';
 
 const getAllRooms = async (req: Request, res: Response) => {
-  const roomsList = await Room.find();
-
+  // const roomsList = await Room.find();
+  const roomsList = await RoomSql.findAll({
+    include: [
+      {
+        model: RoomAmenitiesSql,
+        attributes: ['amenity']
+      }
+    ]
+  });
   return responseCliente(res, 200, roomsList);
 };
 
