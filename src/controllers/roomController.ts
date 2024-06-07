@@ -38,7 +38,7 @@ const getRoomById = async (req: Request, res: Response) => {
 
 const createNewRoom = async (req: Request, res: Response) => {
   try {
-    const newRoom = RoomSql.build(req.body);
+    const newRoom = await RoomSql.create(req.body);
     return responseCliente(res, 200, newRoom);
   } catch (error) {
     throw new ClientError('Invalid room format', 400);
