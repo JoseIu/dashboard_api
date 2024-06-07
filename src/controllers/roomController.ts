@@ -11,17 +11,25 @@ const getAllRooms = async (req: Request, res: Response) => {
     include: [
       {
         model: RoomAmenitiesSql,
-        attributes: ['amenity']
+        attributes: ['amenity'].flatMap(amenity => amenity)
       }
     ]
   });
+
   return responseCliente(res, 200, roomsList);
 };
 
 const getRoomById = async (req: Request, res: Response) => {
   const { id } = req.params;
   if (!id) throw new ClientError('Id is required', 400);
-  const room = await Room.findOne({ _id: id });
+  const room = await RoomSql.findByPk(id, {
+    include: [
+      {
+        model: RoomAmenitiesSql,
+        attributes: ['amenity'].flatMap(amenity => amenity)
+      }
+    ]
+  });
 
   if (!room) throw new ClientError(`Room with id ${id} not found`, 404);
 
@@ -30,8 +38,7 @@ const getRoomById = async (req: Request, res: Response) => {
 
 const createNewRoom = async (req: Request, res: Response) => {
   try {
-    const newRoom = new Room(req.body);
-    await newRoom.save();
+    const newRoom = RoomSql.build(req.body);
     return responseCliente(res, 200, newRoom);
   } catch (error) {
     throw new ClientError('Invalid room format', 400);
