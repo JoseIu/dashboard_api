@@ -13,10 +13,10 @@ import { ClientError } from './utils/errorClient';
 const expresApp = express();
 conectarDB();
 
-const dominPermit = [process.env.FRONT_URL];
+const dominPermit = process.env.FRONT_URL?.split(',');
 const corsOptions = {
   origin: function (origin: string | undefined, callback: (err: Error | null, allow: boolean) => void) {
-    if (!origin || dominPermit.indexOf(origin) !== -1) return callback(null, true);
+    if (!origin || dominPermit!.indexOf(origin) !== -1) return callback(null, true);
     else callback(new Error('No permitido por CORS'), false);
   }
 };
