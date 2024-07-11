@@ -5,9 +5,9 @@ on:
     branches:
       - main
 
-permissions:
-  id-token: write
-  contents: read
+# permissions:
+#   id-token: write
+#   contents: read
 
 jobs:
   deploy:
@@ -23,8 +23,8 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm install
-       - name: Build and deploy with Serverlss
-          run: pnpm run deploy
+      - name: Build and deploy with Serverlss
+        run: pnpm run deploy
         env:
           AWS_LAMBA_BUCKET: ${{ secrets.AWS_LAMBA_NAME }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
