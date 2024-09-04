@@ -19,7 +19,6 @@ const seedDB = async () => {
     for (let i = 0; i < 20; i++) {
       let offer = faker.datatype.boolean();
       const room: RoomInterfaceSeed = {
-        roomImages: faker.image.avatar(),
         roomNumber: faker.number.int({ min: 1, max: 100 }).toString(),
 
         roomType: faker.helpers.arrayElement(['Single Bed', 'Double Bed', 'Double Superior', 'Suite']),
