@@ -1,6 +1,6 @@
 export interface RoomInterface {
   _id?: string;
-  roomImages: string;
+
   roomNumber: string;
   roomType: string;
   description: string;
@@ -13,7 +13,6 @@ export interface RoomInterface {
 }
 
 export interface RoomInterfaceSeed {
-  roomImages: string;
   roomNumber: string;
   roomType: string;
   description: string;
