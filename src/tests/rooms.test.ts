@@ -58,7 +58,6 @@ describe('POST /room', () => {
   const token = process.env.TOKEN_TEST!;
 
   const newRoom: RoomInterface = {
-    roomImages: 'https://www.google.com.png',
     roomNumber: '1233',
     roomType: 'Single Bed',
     description: 'lorem ipsum dolor sit amet consectetur adipisicing elit',
@@ -100,7 +99,6 @@ describe('PUT /room/:id', () => {
   const token = process.env.TOKEN_TEST!;
 
   const newRoom: RoomInterface = {
-    roomImages: 'https://www.google.com.png',
     roomNumber: '1233',
     roomType: 'Single Bed',
     description: 'lorem ipsum dolor sit amet consectetur adipisicing elit',
@@ -143,7 +141,6 @@ describe('PUT /room/:id', () => {
 
 describe('DELTE /room/:id', () => {
   const newRoom: RoomInterface = {
-    roomImages: 'https://www.google.com.png',
     roomNumber: '1233',
     roomType: 'Single Bed',
     description: 'lorem ipsum dolor sit amet consectetur adipisicing elit',
