@@ -23,7 +23,7 @@ const seedDB = async () => {
         firstName: faker.person.firstName(),
         lastName: faker.person.lastName(),
         password: bcrypt.hashSync('prueba', 10),
-        image: faker.image.avatar(),
+        image: faker.image.url(),
         startDate: faker.date.anytime().toISOString().slice(0, 10),
         phone: faker.phone.number(),
         email: faker.internet.email(),
